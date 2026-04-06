@@ -18,53 +18,29 @@
     --tag-bg: #f4f4f0;
   }
 
-  /* ─── Print styles ──────────────────────────────────────────── */
+  /* ── Print: hide everything — the JS popup handles PDF ── */
   @media print {
-    @page { margin: 1cm 1.2cm; size: A4; }
-    html { font-size: 70%; }
-    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; background: #fff; }
-
-    .download-bar { display: none !important; }
-
-    .cv { padding: 0; max-width: 100%; width: 100%; margin: 0; box-shadow: none; }
-
-    .header { padding-bottom: 0.9rem; margin-bottom: 1.1rem; }
-    .name { font-size: 32px; }
-    .section { margin-bottom: 1.1rem; }
-    .section-label { margin-bottom: 0.5rem; padding-bottom: 3px; }
-    .summary-text { font-size: 11.5px; line-height: 1.55; }
-    .body { display: grid !important; grid-template-columns: 1fr 210px !important; gap: 1.8rem; }
-    .job { padding-bottom: 0.9rem; margin-bottom: 0.9rem; }
-    .job-company { font-size: 12.5px; }
-    .job-title { margin-bottom: 5px; font-size: 11px; }
-    .job ul li { font-size: 11px; line-height: 1.5; margin-bottom: 3px; }
-    .sidebar-section { margin-bottom: 1rem; }
-    .skill-group { margin-bottom: 0.55rem; }
-    .skill-group-name { font-size: 10.5px; }
-    .skill-list { font-size: 10.5px; line-height: 1.5; }
-    .tag { font-size: 8.5px; padding: 2px 5px; }
-    .edu-item { margin-bottom: 0.5rem; }
-    .edu-name { font-size: 11px; }
-    .edu-sub { font-size: 10px; }
-    .edu-date { font-size: 9px; }
-    .lang-item { font-size: 10.5px; }
+    * { display: none !important; }
   }
 
-  /* ─── Base ──────────────────────────────────────────────────── */
+  /* ════════════════════════════════
+     BASE
+  ════════════════════════════════ */
   body {
     background: #f0efe8;
     font-family: 'Jost', sans-serif;
     color: var(--text-primary);
     -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
   }
 
-  /* ─── Download bar ──────────────────────────────────────────── */
+  /* ── Download bar ── */
   .download-bar {
     display: flex;
     justify-content: flex-end;
-    max-width: 860px;
-    margin: 1.5rem auto 0.6rem;
-    padding: 0 0.5rem;
+    padding: 1.5rem 2rem 0.6rem;
+    max-width: 1400px;
+    margin: 0 auto;
   }
 
   .download-btn {
@@ -74,14 +50,13 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     font-weight: 500;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--text-secondary);
     background: var(--bg);
     border: 0.5px solid var(--border);
-    padding: 8px 14px;
+    padding: 9px 16px;
     cursor: pointer;
-    text-decoration: none;
     border-radius: 2px;
     transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
   }
@@ -100,29 +75,31 @@
     flex-shrink: 0;
   }
 
-  /* ─── CV wrapper ────────────────────────────────────────────── */
+  /* ════════════════════════════════
+     CV SHELL — desktop wide
+  ════════════════════════════════ */
   .cv {
     background: var(--bg);
-    max-width: 860px;
-    margin: 0 auto 2rem;
-    padding: 3rem 3.2rem;
+    max-width: 1300px;
+    margin: 0 auto 3rem;
+    padding: 4rem 5rem;
   }
 
-  /* ─── Header ────────────────────────────────────────────────── */
+  /* ── Header ── */
   .header {
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: end;
-    gap: 2rem;
-    padding-bottom: 1.4rem;
+    gap: 3rem;
+    padding-bottom: 2rem;
     border-bottom: 1.5px solid var(--text-primary);
-    margin-bottom: 1.8rem;
+    margin-bottom: 3rem;
   }
 
   .name {
-    font-size: 42px;
+    font-size: 64px;
     font-weight: 300;
-    letter-spacing: -1px;
+    letter-spacing: -2px;
     line-height: 1;
     color: var(--text-primary);
   }
@@ -131,56 +108,55 @@
 
   .role-tag {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    font-weight: 400;
+    font-size: 11px;
     color: var(--text-muted);
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    margin-top: 8px;
+    margin-top: 12px;
   }
 
   .contact {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 3px;
-    padding-bottom: 4px;
+    gap: 5px;
+    padding-bottom: 6px;
   }
 
   .contact a, .contact span {
-    font-size: 12px;
+    font-size: 14px;
     color: var(--text-secondary);
     text-decoration: none;
     font-weight: 300;
   }
 
-  /* ─── Two-column body ───────────────────────────────────────── */
+  /* ── Body: main + sidebar ── */
   .body {
     display: grid;
-    grid-template-columns: 1fr 210px;
-    gap: 3rem;
+    grid-template-columns: 1fr 280px;
+    gap: 5rem;
     align-items: start;
   }
 
-  /* ─── Sections ──────────────────────────────────────────────── */
-  .section { margin-bottom: 1.8rem; }
+  /* ── Sections ── */
+  .section { margin-bottom: 2.8rem; }
 
   .section-label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 9.5px;
+    font-size: 10px;
     font-weight: 500;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--text-muted);
-    margin-bottom: 0.8rem;
-    padding-bottom: 5px;
+    margin-bottom: 1.2rem;
+    padding-bottom: 6px;
     border-bottom: 0.5px solid var(--border);
   }
 
   .summary-text {
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 300;
-    line-height: 1.75;
+    line-height: 1.8;
     color: var(--text-secondary);
   }
 
@@ -189,10 +165,10 @@
     color: var(--text-primary);
   }
 
-  /* ─── Jobs ──────────────────────────────────────────────────── */
+  /* ── Jobs ── */
   .job {
-    padding-bottom: 1.3rem;
-    margin-bottom: 1.3rem;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
     border-bottom: 0.5px solid var(--border-light);
   }
 
@@ -206,40 +182,40 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 1px;
+    margin-bottom: 2px;
   }
 
   .job-company {
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 500;
     color: var(--text-primary);
   }
 
   .job-date {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
+    font-size: 11px;
     color: var(--text-muted);
     white-space: nowrap;
   }
 
   .job-title {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 300;
     font-style: italic;
     color: var(--text-muted);
-    margin-bottom: 9px;
+    margin-bottom: 12px;
   }
 
   .job ul { list-style: none; }
 
   .job ul li {
-    font-size: 12.5px;
+    font-size: 15px;
     font-weight: 300;
-    line-height: 1.65;
+    line-height: 1.7;
     color: var(--text-secondary);
-    padding-left: 13px;
+    padding-left: 16px;
     position: relative;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
   }
 
   .job ul li::before {
@@ -247,7 +223,6 @@
     position: absolute;
     left: 0;
     color: var(--border);
-    font-weight: 400;
   }
 
   .job ul li strong {
@@ -255,20 +230,20 @@
     font-weight: 500;
   }
 
-  /* ─── Sidebar ───────────────────────────────────────────────── */
-  .sidebar-section { margin-bottom: 1.5rem; }
+  /* ── Sidebar ── */
+  .sidebar-section { margin-bottom: 2rem; }
 
-  .skill-group { margin-bottom: 0.85rem; }
+  .skill-group { margin-bottom: 1.1rem; }
 
   .skill-group-name {
-    font-size: 11.5px;
+    font-size: 13px;
     font-weight: 500;
     color: var(--text-primary);
-    margin-bottom: 2px;
+    margin-bottom: 3px;
   }
 
   .skill-list {
-    font-size: 11.5px;
+    font-size: 13px;
     font-weight: 300;
     color: var(--text-secondary);
     line-height: 1.65;
@@ -277,13 +252,13 @@
   .tag-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
+    gap: 5px;
   }
 
   .tag {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 9.5px;
-    padding: 3px 7px;
+    font-size: 10px;
+    padding: 4px 9px;
     border-radius: 2px;
     background: var(--tag-bg);
     color: var(--text-secondary);
@@ -291,129 +266,113 @@
     letter-spacing: 0.02em;
   }
 
-  /* ─── Education & Languages ─────────────────────────────────── */
-  .edu-item { margin-bottom: 0.8rem; }
+  .edu-item { margin-bottom: 1rem; }
 
   .edu-name {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 500;
     color: var(--text-primary);
     line-height: 1.4;
   }
 
   .edu-sub {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 300;
     color: var(--text-secondary);
   }
 
   .edu-date {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
+    font-size: 11px;
     color: var(--text-muted);
   }
 
-  .lang-row {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-  }
+  .lang-row { display: flex; flex-direction: column; gap: 5px; }
 
   .lang-item {
     display: flex;
     justify-content: space-between;
-    font-size: 11.5px;
+    font-size: 13px;
   }
 
   .lang-name { font-weight: 400; color: var(--text-primary); }
   .lang-level { font-weight: 300; color: var(--text-muted); }
 
-  /* ─── Mobile responsive ─────────────────────────────────────── */
-  @media (max-width: 680px) {
-    body { background: #f0efe8; }
+  /* ════════════════════════════════
+     MOBILE (≤ 768px)
+  ════════════════════════════════ */
+  @media (max-width: 768px) {
+    .download-bar { padding: 1rem 1rem 0.5rem; }
 
-    .download-bar {
-      margin: 1rem auto 0.5rem;
-      padding: 0 1rem;
-    }
+    .cv { padding: 1.6rem 1.2rem 2.5rem; margin-bottom: 0; }
 
-    .cv {
-      margin: 0 auto 1.5rem;
-      padding: 1.6rem 1.25rem;
-      border-radius: 0;
-    }
-
-    /* Header: stack name above contact */
     .header {
       grid-template-columns: 1fr;
-      gap: 0.9rem;
-      padding-bottom: 1.1rem;
-      margin-bottom: 1.4rem;
+      gap: 1rem;
+      padding-bottom: 1.2rem;
+      margin-bottom: 1.8rem;
     }
 
-    .name { font-size: 32px; letter-spacing: -0.5px; }
+    .name { font-size: 36px; letter-spacing: -1px; }
     .role-tag { font-size: 9px; margin-top: 6px; }
 
     .contact {
       align-items: flex-start;
-      gap: 2px;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 4px 10px;
     }
 
     .contact a, .contact span { font-size: 12.5px; }
 
-    /* Body: single column — main first, sidebar below */
     .body {
       grid-template-columns: 1fr;
       gap: 0;
     }
 
-    /* Keep sidebar visually distinct */
+    .section { margin-bottom: 1.6rem; }
+    .section-label { font-size: 9px; margin-bottom: 0.9rem; }
+    .summary-text { font-size: 14px; line-height: 1.72; }
+
+    .job-company { font-size: 16px; }
+    .job-title { font-size: 13px; }
+    .job ul li { font-size: 13.5px; line-height: 1.62; margin-bottom: 6px; }
+    .job { padding-bottom: 1.5rem; margin-bottom: 1.5rem; }
+
     .sidebar {
-      border-top: 1.5px solid var(--border-light);
-      padding-top: 1.4rem;
-      margin-top: 0.4rem;
+      border-top: 1px solid var(--border-light);
+      padding-top: 1.8rem;
+      margin-top: 0.5rem;
     }
 
-    /* Sidebar sections in a 2-col mini-grid on medium-mobile */
-    .sidebar-section { margin-bottom: 1.2rem; }
-
-    .summary-text { font-size: 13.5px; }
-
-    .job-company { font-size: 14.5px; }
-    .job ul li { font-size: 13px; }
-    .job-header { flex-direction: column; gap: 2px; }
-    .job-date { font-size: 10px; }
-
-    .skill-group-name { font-size: 12px; }
-    .skill-list { font-size: 12px; }
-    .tag { font-size: 10px; }
-    .edu-name { font-size: 12.5px; }
-    .edu-sub { font-size: 11.5px; }
-    .lang-item { font-size: 12px; }
+    .sidebar-section { margin-bottom: 1.5rem; }
+    .skill-group-name { font-size: 13px; }
+    .skill-list { font-size: 13px; }
+    .tag { font-size: 10.5px; padding: 4px 8px; }
+    .edu-name { font-size: 13px; }
+    .edu-sub { font-size: 12px; }
+    .lang-item { font-size: 13px; }
   }
 
   @media (max-width: 400px) {
-    .cv { padding: 1.2rem 1rem; }
-    .name { font-size: 28px; }
+    .name { font-size: 30px; }
+    .cv { padding: 1.2rem 0.9rem 2rem; }
+    .contact { flex-direction: column; gap: 2px; }
   }
 </style>
 </head>
 <body>
 
-  <!-- Download bar (hidden on print) -->
-  <div class="download-bar">
-    <button class="download-btn" onclick="window.print()">
-      <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-        <polyline points="7 10 12 15 17 10"/>
-        <line x1="12" y1="15" x2="12" y2="3"/>
-      </svg>
-      Download PDF
-    </button>
-  </div>
+<div class="download-bar">
+  <button class="download-btn" onclick="printCV()">
+    <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/>
+    </svg>
+    Save as PDF
+  </button>
+</div>
 
 <div class="cv">
-
   <div class="header">
     <div>
       <div class="name">Mariana <strong>Faria</strong></div>
@@ -422,7 +381,7 @@
     <div class="contact">
       <span>+351 910 420 307</span>
       <a href="mailto:marianaefaria@gmail.com">marianaefaria@gmail.com</a>
-      <a href="https://linkedin.com/in/marianaefaria">linkedin.com/in/marianaefaria</a>
+      <a href="https://linkedin.com/in/marianaefaria" target="_blank" rel="noopener">linkedin.com/in/marianaefaria</a>
       <span>Lisbon, Portugal</span>
     </div>
   </div>
@@ -452,6 +411,7 @@
             <li>Build <strong>reporting and operational dashboards</strong> for each project I work on, shared actively with the team so anyone can access the data they need without depending on a technical resource — from SDR activity tracking in HubSpot to custom interfaces built in Lovable and Supabase.</li>
             <li>Use <strong>Clay</strong> for lead enrichment workflows, pulling from multiple data sources to feed qualified leads into the pipeline, with web scraping via Apify and Octoparse when needed.</li>
             <li>Work across <strong>APIs, webhooks, and database design</strong> (Supabase / PostgreSQL) to build integrations and internal tooling that connect parts of the stack that don't talk to each other natively.</li>
+            <li>Partner with Sales, BDRs, Demand Gen, and Sales Ops on lead handoff quality, pipeline reporting, and data integrity across three markets.</li>
           </ul>
         </div>
 
@@ -464,6 +424,8 @@
           <ul>
             <li>Led a team delivering lead generation campaigns across a portfolio of 25+ clients, consistently hitting monthly pipeline targets within budget and timeline.</li>
             <li>Built task management and documentation processes from scratch, creating workflows that scaled as the team grew.</li>
+            <li>Translated technical campaign requirements into clear stakeholder communication across internal teams, external partners, and clients.</li>
+            <li>Mentored and onboarded marketing managers at different experience levels, building a culture of accountability and shared ownership.</li>
           </ul>
         </div>
 
@@ -479,34 +441,28 @@
         </div>
 
       </div>
-
     </div>
 
     <div class="sidebar">
 
       <div class="sidebar-section">
         <div class="section-label">Core Skills</div>
-
         <div class="skill-group">
           <div class="skill-group-name">Marketing automation</div>
           <div class="skill-list">HubSpot (Marketing + Sales Hub), n8n, lead scoring, pipeline management, data hygiene</div>
         </div>
-
         <div class="skill-group">
           <div class="skill-group-name">AI & agents</div>
           <div class="skill-list">Prompt engineering, AI agent design, LLM integration, MCP protocol</div>
         </div>
-
         <div class="skill-group">
           <div class="skill-group-name">Data & enrichment</div>
           <div class="skill-list">Clay, Supabase, PostgreSQL, pipeline reporting, web scraping (Apify, Octoparse)</div>
         </div>
-
         <div class="skill-group">
           <div class="skill-group-name">Integrations</div>
           <div class="skill-list">APIs, webhooks, n8n, Zapier, Make</div>
         </div>
-
         <div class="skill-group">
           <div class="skill-group-name">Cross-functional</div>
           <div class="skill-list">Sales & marketing alignment, BDR enablement, GTM systems thinking</div>
@@ -568,7 +524,177 @@
 
     </div>
   </div>
-
 </div>
+
+<script>
+function printCV() {
+  var html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mariana Faria — CV</title>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --text-primary: #1a1a18; --text-secondary: #4a4a46; --text-muted: #8a8a84;
+    --border: #d8d8d2; --border-light: #eaeae4; --bg: #ffffff; --tag-bg: #f4f4f0;
+  }
+  @page { margin: 1.2cm 1.4cm 0 1.4cm; size: A4; }
+  /* font-size on html = rem base. This IS respected at print time in the popup. */
+  html { font-size: 13.5px; }
+  body { background: #fff; font-family: 'Jost', sans-serif; color: var(--text-primary);
+         -webkit-font-smoothing: antialiased; -webkit-print-color-adjust: exact; print-color-adjust: exact;
+         overflow: hidden; }
+  .cv { width: 100%; }
+  .header { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 2rem;
+            padding-bottom: 1rem; border-bottom: 1.5px solid var(--text-primary); margin-bottom: 1.4rem; }
+  .name { font-size: 2.8rem; font-weight: 300; letter-spacing: -0.05em; line-height: 1; color: var(--text-primary); }
+  .name strong { font-weight: 500; }
+  .role-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; color: var(--text-muted);
+              letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.5rem; }
+  .contact { display: flex; flex-direction: column; align-items: flex-end; gap: 0.2rem; padding-bottom: 0.3rem; }
+  .contact a, .contact span { font-size: 0.78rem; color: var(--text-secondary); text-decoration: none; font-weight: 300; }
+  .body { display: grid; grid-template-columns: 1fr 160px; gap: 2rem; align-items: start; }
+  .section { margin-bottom: 2.2rem; }
+  .section-label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; font-weight: 500;
+                   letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted);
+                   margin-bottom: 0.9rem; padding-bottom: 0.3rem; border-bottom: 0.5px solid var(--border); }
+  .summary-text { font-size: 0.85rem; font-weight: 300; line-height: 1.7; color: var(--text-secondary); }
+  .summary-text strong { font-weight: 500; color: var(--text-primary); }
+  .job { padding-bottom: 1.4rem; margin-bottom: 1.4rem; border-bottom: 0.5px solid var(--border-light); }
+  .job:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+  .job-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.1rem; }
+  .job-company { font-size: 0.95rem; font-weight: 500; color: var(--text-primary); }
+  .job-date { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--text-muted); white-space: nowrap; }
+  .job-title { font-size: 0.78rem; font-weight: 300; font-style: italic; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .job ul { list-style: none; }
+  .job ul li { font-size: 0.82rem; font-weight: 300; line-height: 1.65; color: var(--text-secondary);
+               padding-left: 0.8rem; position: relative; margin-bottom: 0.35rem; }
+  .job ul li::before { content: '–'; position: absolute; left: 0; color: var(--border); font-weight: 400; }
+  .job ul li strong { color: var(--text-primary); font-weight: 500; }
+  .sidebar-section { margin-bottom: 1.8rem; }
+  .skill-group { margin-bottom: 0.8rem; }
+  .skill-group-name { font-size: 0.75rem; font-weight: 500; color: var(--text-primary); margin-bottom: 0.15rem; }
+  .skill-list { font-size: 0.72rem; font-weight: 300; color: var(--text-secondary); line-height: 1.6; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+  .tag { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; padding: 0.18rem 0.45rem;
+         border-radius: 2px; background: var(--tag-bg); color: var(--text-secondary);
+         border: 0.5px solid var(--border); letter-spacing: 0.02em; }
+  .edu-item { margin-bottom: 0.75rem; }
+  .edu-name { font-size: 0.75rem; font-weight: 500; color: var(--text-primary); line-height: 1.3; }
+  .edu-sub { font-size: 0.68rem; font-weight: 300; color: var(--text-secondary); }
+  .edu-date { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; color: var(--text-muted); }
+  .lang-row { display: flex; flex-direction: column; gap: 0.3rem; }
+  .lang-item { display: flex; justify-content: space-between; font-size: 0.75rem; }
+  .lang-name { font-weight: 400; color: var(--text-primary); }
+  .lang-level { font-weight: 300; color: var(--text-muted); }
+</style>
+</head>
+<body>
+<div class="cv">
+  <div class="header">
+    <div>
+      <div class="name">Mariana <strong>Faria</strong></div>
+      <div class="role-tag">Marketing Operations · AI &amp; Automation · Revenue Ops</div>
+    </div>
+    <div class="contact">
+      <span>+351 910 420 307</span>
+      <a href="mailto:marianaefaria@gmail.com">marianaefaria@gmail.com</a>
+      <a href="https://linkedin.com/in/marianaefaria">linkedin.com/in/marianaefaria</a>
+      <span>Lisbon, Portugal</span>
+    </div>
+  </div>
+  <div class="body">
+    <div class="main">
+      <div class="section">
+        <div class="section-label">Profile</div>
+        <p class="summary-text">Marketing operations professional with 6+ years across performance marketing, revenue ops, and martech. At Coverflex, a benefits platform operating across three European markets, I build <strong>AI agents, automation workflows, and CRM infrastructure</strong> that make the GTM machine run. My background in performance marketing gave me a data-first instinct; what I've been doing since is applying it to systems. When I hit something I don't know, I figure it out, building things to work today and scale tomorrow.</p>
+      </div>
+      <div class="section">
+        <div class="section-label">Work Experience</div>
+        <div class="job">
+          <div class="job-header"><span class="job-company">Coverflex</span><span class="job-date">Jan 2025 – Present</span></div>
+          <div class="job-title">Growth Operations Specialist</div>
+          <ul>
+            <li>Work across the <strong>HubSpot CRM</strong> for three country pipelines (PT, ES, IT) — lifecycle stage tracking, calculated properties, lead scoring logic, and data hygiene — making sure the foundation the rest of the team works from is clean and reliable.</li>
+            <li>Design and deploy <strong>AI agents</strong> across different parts of the GTM process: email agents, inbound and outbound voice agents (ElevenLabs), post-call summaries and automated follow-up email generation, and sentiment analysis for lead categorisation — building in n8n and integrating with HubSpot and other tools in the stack.</li>
+            <li>Build <strong>reporting and operational dashboards</strong> for each project I work on, shared actively with the team so anyone can access the data they need without depending on a technical resource — from SDR activity tracking in HubSpot to custom interfaces built in Lovable and Supabase.</li>
+            <li>Use <strong>Clay</strong> for lead enrichment workflows, pulling from multiple data sources to feed qualified leads into the pipeline, with web scraping via Apify and Octoparse when needed.</li>
+            <li>Work across <strong>APIs, webhooks, and database design</strong> (Supabase / PostgreSQL) to build integrations and internal tooling that connect parts of the stack that don't talk to each other natively.</li>
+            <li>Partner with Sales, BDRs, Demand Gen, and Sales Ops on lead handoff quality, pipeline reporting, and data integrity across three markets.</li>
+          </ul>
+        </div>
+        <div class="job">
+          <div class="job-header"><span class="job-company">Gerodigital</span><span class="job-date">Sept 2021 – Jun 2024</span></div>
+          <div class="job-title">Performance Marketing Team Lead</div>
+          <ul>
+            <li>Led a team delivering lead generation campaigns across a portfolio of 25+ clients, consistently hitting monthly pipeline targets within budget and timeline.</li>
+            <li>Built task management and documentation processes from scratch, creating workflows that scaled as the team grew.</li>
+            <li>Translated technical campaign requirements into clear stakeholder communication across internal teams, external partners, and clients.</li>
+            <li>Mentored and onboarded marketing managers at different experience levels, building a culture of accountability and shared ownership.</li>
+          </ul>
+        </div>
+        <div class="job">
+          <div class="job-header"><span class="job-company">Gerodigital</span><span class="job-date">Jan 2019 – Sept 2021</span></div>
+          <div class="job-title">Performance Marketing Manager</div>
+          <ul>
+            <li>Managed paid media campaigns across channels: planning, daily monitoring, budget allocation, and ROI optimisation across a multi-client portfolio.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar">
+      <div class="sidebar-section">
+        <div class="section-label">Core Skills</div>
+        <div class="skill-group"><div class="skill-group-name">Marketing automation</div><div class="skill-list">HubSpot (Marketing + Sales Hub), n8n, lead scoring, pipeline management, data hygiene</div></div>
+        <div class="skill-group"><div class="skill-group-name">AI &amp; agents</div><div class="skill-list">Prompt engineering, AI agent design, LLM integration, MCP protocol</div></div>
+        <div class="skill-group"><div class="skill-group-name">Data &amp; enrichment</div><div class="skill-list">Clay, Supabase, PostgreSQL, pipeline reporting, web scraping (Apify, Octoparse)</div></div>
+        <div class="skill-group"><div class="skill-group-name">Integrations</div><div class="skill-list">APIs, webhooks, n8n, Zapier, Make</div></div>
+        <div class="skill-group"><div class="skill-group-name">Cross-functional</div><div class="skill-list">Sales &amp; marketing alignment, BDR enablement, GTM systems thinking</div></div>
+      </div>
+      <div class="sidebar-section">
+        <div class="section-label">Stack</div>
+        <div class="tag-row">
+          <span class="tag">HubSpot</span><span class="tag">n8n</span><span class="tag">Clay</span><span class="tag">ElevenLabs</span><span class="tag">Supabase</span><span class="tag">PostgreSQL</span><span class="tag">GlockApps</span><span class="tag">Apify</span><span class="tag">Octoparse</span><span class="tag">Zapier</span><span class="tag">Make</span><span class="tag">Lovable</span><span class="tag">Claude API</span><span class="tag">MCP</span>
+        </div>
+      </div>
+      <div class="sidebar-section">
+        <div class="section-label">Education</div>
+        <div class="edu-item"><div class="edu-name">Full-Stack Web Development</div><div class="edu-sub">Ironhack Bootcamp</div><div class="edu-date">Jun – Dec 2021</div></div>
+        <div class="edu-item"><div class="edu-name">Bachelor in Marketing</div><div class="edu-sub">ISCAP</div><div class="edu-date">2013 – 2018</div></div>
+        <div class="edu-item"><div class="edu-name">Marketing Digital Academy</div><div class="edu-sub">FLAG</div><div class="edu-date">2017 – 2018</div></div>
+      </div>
+      <div class="sidebar-section">
+        <div class="section-label">Languages</div>
+        <div class="lang-row">
+          <div class="lang-item"><span class="lang-name">Portuguese</span><span class="lang-level">Native</span></div>
+          <div class="lang-item"><span class="lang-name">English</span><span class="lang-level">Fluent</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>`;
+
+  // Write into a hidden iframe so CSS grid renders fully before print
+  var iframe = document.createElement('iframe');
+  iframe.style.cssText = 'position:fixed;top:0;left:0;width:794px;height:1123px;border:none;opacity:0;pointer-events:none;';
+  document.body.appendChild(iframe);
+  var doc = iframe.contentDocument || iframe.contentWindow.document;
+  doc.open();
+  doc.write(html);
+  doc.close();
+  // Wait for fonts + layout to settle, then print the iframe
+  doc.fonts.ready.then(function() {
+    setTimeout(function() {
+      iframe.contentWindow.print();
+      setTimeout(function() { document.body.removeChild(iframe); }, 2000);
+    }, 500);
+  });
+}
+</script>
+
 </body>
 </html>
