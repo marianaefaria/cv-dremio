@@ -189,6 +189,7 @@
       scrollbar-width: none;
     }
     .mobile-nav::-webkit-scrollbar { display: none; }
+
     .mobile-nav a {
       flex-shrink: 0;
       font-family: 'JetBrains Mono', monospace;
@@ -198,13 +199,20 @@
       padding: 13px 16px;
       border-bottom: 2px solid transparent;
       margin-bottom: -1.5px;
-      transition: color 0.15s, border-color 0.15s;
+      transition: color 0.15s, border-color 0.15s, background 0.15s;
       white-space: nowrap;
     }
-    .mobile-nav a.active,
+
+    /* Active state: much more visible */
+    .mobile-nav a.active {
+      color: var(--text-primary);
+      font-weight: 500;
+      border-bottom-color: var(--text-primary);
+      background: var(--tag-bg);
+    }
     .mobile-nav a:hover {
       color: var(--text-primary);
-      border-bottom-color: var(--text-primary);
+      border-bottom-color: var(--border);
     }
 
     /* ── Action bar ── */
@@ -226,10 +234,8 @@
     .name { font-size: 36px; letter-spacing: -1.5px; line-height: 1.05; }
     .role-tag { font-size: 9px; margin-top: 8px; }
 
-    /* Desktop contact hidden */
     .contact-desktop { display: none; }
 
-    /* Mobile contact: each item on its own line, uniform size, with subtle label */
     .contact-mobile {
       display: flex;
       flex-direction: column;
@@ -258,14 +264,13 @@
       stroke: var(--text-muted); fill: none; flex-shrink: 0;
     }
 
-    /* ── Sections: alternating bg for clear separation ── */
+    /* ── Body & sections ── */
     .body { display: block; }
 
     .mobile-section {
       padding: 1.6rem 1.2rem;
       border-bottom: 0.5px solid var(--border);
     }
-    .mobile-section:nth-child(even) { background: var(--bg-alt); }
     .mobile-section:last-child { border-bottom: none; }
 
     /* Override section defaults inside mobile-section */
@@ -540,7 +545,15 @@
     });
     links.forEach(function(a) {
       var href = a.getAttribute('href').replace('#','');
-      a.classList.toggle('active', href === current);
+      var isActive = href === current;
+      a.classList.toggle('active', isActive);
+      // Auto-scroll nav so active item is visible
+      if (isActive) {
+        var navW = nav.offsetWidth;
+        var aLeft = a.offsetLeft;
+        var aW = a.offsetWidth;
+        nav.scrollTo({ left: aLeft - navW / 2 + aW / 2, behavior: 'smooth' });
+      }
     });
   }
   window.addEventListener('scroll', update, { passive: true });
