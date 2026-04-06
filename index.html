@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mariana Faria — CV</title>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --text-primary: #1a1a18;
+    --text-secondary: #4a4a46;
+    --text-muted: #8a8a84;
+    --border: #d8d8d2;
+    --border-light: #eaeae4;
+    --bg: #ffffff;
+    --tag-bg: #f4f4f0;
+  }
+
+  @media print {
+    @page { margin: 1cm 1.2cm; size: A4; }
+    html { font-size: 70%; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .cv { padding: 0; max-width: 100%; width: 100%; overflow: hidden; }
+
+    .header { padding-bottom: 0.9rem; margin-bottom: 1.1rem; }
+    .name { font-size: 32px; }
+    .section { margin-bottom: 1.1rem; }
+    .section-label { margin-bottom: 0.5rem; padding-bottom: 3px; }
+    .summary-text { font-size: 11.5px; line-height: 1.55; }
+    .body { gap: 1.8rem; }
+    .job { padding-bottom: 0.9rem; margin-bottom: 0.9rem; }
+    .job-company { font-size: 12.5px; }
+    .job-title { margin-bottom: 5px; font-size: 11px; }
+    .job ul li { font-size: 11px; line-height: 1.5; margin-bottom: 3px; }
+    .sidebar-section { margin-bottom: 1rem; }
+    .skill-group { margin-bottom: 0.55rem; }
+    .skill-group-name { font-size: 10.5px; }
+    .skill-list { font-size: 10.5px; line-height: 1.5; }
+    .tag { font-size: 8.5px; padding: 2px 5px; }
+    .edu-item { margin-bottom: 0.5rem; }
+    .edu-name { font-size: 11px; }
+    .edu-sub { font-size: 10px; }
+    .edu-date { font-size: 9px; }
+    .lang-item { font-size: 10.5px; }
+  }
+
+  body {
+    background: #f0efe8;
+    font-family: 'Jost', sans-serif;
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .cv {
+    background: var(--bg);
+    max-width: 860px;
+    margin: 2rem auto;
+    padding: 3rem 3.2rem 3rem 3.2rem;
+  }
+
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 2rem;
+    padding-bottom: 1.4rem;
+    border-bottom: 1.5px solid var(--text-primary);
+    margin-bottom: 1.8rem;
+  }
+
+  .name {
+    font-size: 42px;
+    font-weight: 300;
+    letter-spacing: -1px;
+    line-height: 1;
+    color: var(--text-primary);
+  }
+
+  .name strong { font-weight: 500; }
+
+  .role-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+
+  .contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
+    padding-bottom: 4px;
+  }
+
+  .contact a, .contact span {
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 300;
+  }
+
+  .body {
+    display: grid;
+    grid-template-columns: 1fr 210px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .section { margin-bottom: 1.8rem; }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.8rem;
+    padding-bottom: 5px;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .summary-text {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--text-secondary);
+  }
+
+  .summary-text strong {
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .job {
+    padding-bottom: 1.3rem;
+    margin-bottom: 1.3rem;
+    border-bottom: 0.5px solid var(--border-light);
+  }
+
+  .job:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1px;
+  }
+
+  .job-company {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .job-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .job-title {
+    font-size: 12px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-bottom: 9px;
+  }
+
+  .job ul { list-style: none; }
+
+  .job ul li {
+    font-size: 12.5px;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    padding-left: 13px;
+    position: relative;
+    margin-bottom: 5px;
+  }
+
+  .job ul li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--border);
+    font-weight: 400;
+  }
+
+  .job ul li strong {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  .sidebar-section { margin-bottom: 1.5rem; }
+
+  .skill-group { margin-bottom: 0.85rem; }
+
+  .skill-group-name {
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+  }
+
+  .skill-list {
+    font-size: 11.5px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    padding: 3px 7px;
+    border-radius: 2px;
+    background: var(--tag-bg);
+    color: var(--text-secondary);
+    border: 0.5px solid var(--border);
+    letter-spacing: 0.02em;
+  }
+
+  .edu-item { margin-bottom: 0.8rem; }
+
+  .edu-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.4;
+  }
+
+  .edu-sub {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--text-secondary);
+  }
+
+  .edu-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+  }
+
+  .lang-row {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .lang-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11.5px;
+  }
+
+  .lang-name { font-weight: 400; color: var(--text-primary); }
+  .lang-level { font-weight: 300; color: var(--text-muted); }
+</style>
+</head>
+<body>
+<div class="cv">
+
+  <div class="header">
+    <div>
+      <div class="name">Mariana <strong>Faria</strong></div>
+      <div class="role-tag">Marketing Operations · AI & Automation · Revenue Ops</div>
+    </div>
+    <div class="contact">
+      <span>+351 910 420 307</span>
+      <a href="mailto:marianaefaria@gmail.com">marianaefaria@gmail.com</a>
+      <a href="https://linkedin.com/in/marianaefaria">linkedin.com/in/marianaefaria</a>
+      <span>Lisbon, Portugal</span>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="main">
+
+      <div class="section">
+        <div class="section-label">Profile</div>
+        <p class="summary-text">
+          Marketing operations professional with 6+ years across performance marketing, revenue ops, and martech. At Coverflex, a benefits platform operating across three European markets, I build <strong>AI agents, automation workflows, and CRM infrastructure</strong> that make the GTM machine run. My background in performance marketing gave me a data-first instinct; what I've been doing since is applying it to systems. When I hit something I don't know, I figure it out, building things to work today and scale tomorrow.
+        </p>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Work Experience</div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-company">Coverflex</span>
+            <span class="job-date">Jan 2025 – Present</span>
+          </div>
+          <div class="job-title">Growth Operations Specialist</div>
+          <ul>
+            <li>Work across the <strong>HubSpot CRM</strong> for three country pipelines (PT, ES, IT) — lifecycle stage tracking, calculated properties, lead scoring logic, and data hygiene — making sure the foundation the rest of the team works from is clean and reliable.</li>
+            <li>Design and deploy <strong>AI agents</strong> across different parts of the GTM process: email agents, inbound and outbound voice agents (ElevenLabs), post-call summaries and automated follow-up email generation, and sentiment analysis for lead categorisation — building in n8n and integrating with HubSpot and other tools in the stack.</li>
+            <li>Build <strong>reporting and operational dashboards</strong> for each project I work on, shared actively with the team so anyone can access the data they need without depending on a technical resource — from SDR activity tracking in HubSpot to custom interfaces built in Lovable and Supabase.</li>
+            <li>Use <strong>Clay</strong> for lead enrichment workflows, pulling from multiple data sources to feed qualified leads into the pipeline, with web scraping via Apify and Octoparse when needed.</li>
+            <li>Work across <strong>APIs, webhooks, and database design</strong> (Supabase / PostgreSQL) to build integrations and internal tooling that connect parts of the stack that don't talk to each other natively.</li>
+            <li>Partner with Sales, BDRs, Demand Gen, and Sales Ops on lead handoff quality, pipeline reporting, and data integrity across three markets.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-company">Gerodigital</span>
+            <span class="job-date">Sept 2021 – Jun 2024</span>
+          </div>
+          <div class="job-title">Performance Marketing Team Lead</div>
+          <ul>
+            <li>Led a team delivering lead generation campaigns across a portfolio of 25+ clients, consistently hitting monthly pipeline targets within budget and timeline.</li>
+            <li>Built task management and documentation processes from scratch, creating workflows that scaled as the team grew.</li>
+            <li>Translated technical campaign requirements into clear stakeholder communication across internal teams, external partners, and clients.</li>
+            <li>Mentored and onboarded marketing managers at different experience levels, building a culture of accountability and shared ownership.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <span class="job-company">Gerodigital</span>
+            <span class="job-date">Jan 2019 – Sept 2021</span>
+          </div>
+          <div class="job-title">Performance Marketing Manager</div>
+          <ul>
+            <li>Managed paid media campaigns across channels: planning, daily monitoring, budget allocation, and ROI optimisation across a multi-client portfolio.</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="sidebar">
+
+      <div class="sidebar-section">
+        <div class="section-label">Core Skills</div>
+
+        <div class="skill-group">
+          <div class="skill-group-name">Marketing automation</div>
+          <div class="skill-list">HubSpot (Marketing + Sales Hub), n8n, lead scoring, pipeline management, data hygiene</div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-name">AI & agents</div>
+          <div class="skill-list">Prompt engineering, AI agent design, LLM integration, MCP protocol</div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-name">Data & enrichment</div>
+          <div class="skill-list">Clay, Supabase, PostgreSQL, pipeline reporting, web scraping (Apify, Octoparse)</div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-name">Integrations</div>
+          <div class="skill-list">APIs, webhooks, n8n, Zapier, Make</div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-name">Cross-functional</div>
+          <div class="skill-list">Sales & marketing alignment, BDR enablement, GTM systems thinking</div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-label">Stack</div>
+        <div class="tag-row">
+          <span class="tag">HubSpot</span>
+          <span class="tag">n8n</span>
+          <span class="tag">Clay</span>
+          <span class="tag">ElevenLabs</span>
+          <span class="tag">Supabase</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">GlockApps</span>
+          <span class="tag">Apify</span>
+          <span class="tag">Octoparse</span>
+          <span class="tag">Zapier</span>
+          <span class="tag">Make</span>
+          <span class="tag">Lovable</span>
+          <span class="tag">Claude API</span>
+          <span class="tag">MCP</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-label">Education</div>
+        <div class="edu-item">
+          <div class="edu-name">Full-Stack Web Development</div>
+          <div class="edu-sub">Ironhack Bootcamp</div>
+          <div class="edu-date">Jun – Dec 2021</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-name">Bachelor in Marketing</div>
+          <div class="edu-sub">ISCAP</div>
+          <div class="edu-date">2013 – 2018</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-name">Marketing Digital Academy</div>
+          <div class="edu-sub">FLAG</div>
+          <div class="edu-date">2017 – 2018</div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-label">Languages</div>
+        <div class="lang-row">
+          <div class="lang-item">
+            <span class="lang-name">Portuguese</span>
+            <span class="lang-level">Native</span>
+          </div>
+          <div class="lang-item">
+            <span class="lang-name">English</span>
+            <span class="lang-level">Fluent</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
