@@ -432,7 +432,7 @@ async function sendToInbox() {
   btn.textContent = '...';
   btn.disabled = true;
   try {
-    await fetch('https://n8n.marianashub.dev/webhook-test/send-cv-to-my-inbox', {
+    await fetch('https://n8n.marianashub.dev/webhook/send-cv-to-my-inbox', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email })
